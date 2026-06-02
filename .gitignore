@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.pyc
+*.pyi
+.python-version
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+*.manifest
+*.spec
+
+# Logs and databases
+*.log
+logs/
+*.sqlite3
+*.db
+*.sqlite
+
+# Environment variables
+.env
+.env.*
+
+# VS Code
+.vscode/
+
+# Pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+.dmypy/
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Docker
+docker-compose.override.yml
+
+# IDE/editor
+*.swp
+*~
+
+# Generated OpenAPI client
+hutep_vpn/
+# If generated client files should be versioned, remove the previous line.
