@@ -1,0 +1,323 @@
+"""Contains all the data models used in inputs/outputs"""
+
+from .get_clash_path_subid_response_200 import GetClashPathSubidResponse200
+from .get_csrf_token_response_200 import GetCsrfTokenResponse200
+from .get_json_path_subid_response_200 import GetJsonPathSubidResponse200
+from .get_panel_api_clients_get_email_response_200 import GetPanelApiClientsGetEmailResponse200
+from .get_panel_api_clients_groups_name_emails_response_200 import GetPanelApiClientsGroupsNameEmailsResponse200
+from .get_panel_api_clients_groups_response_200 import GetPanelApiClientsGroupsResponse200
+from .get_panel_api_clients_links_email_response_200 import GetPanelApiClientsLinksEmailResponse200
+from .get_panel_api_clients_list_paged_response_200 import GetPanelApiClientsListPagedResponse200
+from .get_panel_api_clients_list_response_200 import GetPanelApiClientsListResponse200
+from .get_panel_api_clients_sub_links_sub_id_response_200 import GetPanelApiClientsSubLinksSubIdResponse200
+from .get_panel_api_clients_traffic_email_response_200 import GetPanelApiClientsTrafficEmailResponse200
+from .get_panel_api_custom_geo_aliases_response_200 import GetPanelApiCustomGeoAliasesResponse200
+from .get_panel_api_custom_geo_list_response_200 import GetPanelApiCustomGeoListResponse200
+from .get_panel_api_inbounds_get_id_response_200 import GetPanelApiInboundsGetIdResponse200
+from .get_panel_api_inbounds_id_fallbacks_response_200 import GetPanelApiInboundsIdFallbacksResponse200
+from .get_panel_api_inbounds_list_response_200 import GetPanelApiInboundsListResponse200
+from .get_panel_api_inbounds_list_slim_response_200 import GetPanelApiInboundsListSlimResponse200
+from .get_panel_api_inbounds_options_response_200 import GetPanelApiInboundsOptionsResponse200
+from .get_panel_api_nodes_get_id_response_200 import GetPanelApiNodesGetIdResponse200
+from .get_panel_api_nodes_history_id_metric_bucket_response_200 import GetPanelApiNodesHistoryIdMetricBucketResponse200
+from .get_panel_api_nodes_list_response_200 import GetPanelApiNodesListResponse200
+from .get_panel_api_server_cpu_history_bucket_response_200 import GetPanelApiServerCpuHistoryBucketResponse200
+from .get_panel_api_server_get_config_json_response_200 import GetPanelApiServerGetConfigJsonResponse200
+from .get_panel_api_server_get_db_response_200 import GetPanelApiServerGetDbResponse200
+from .get_panel_api_server_get_new_uuid_response_200 import GetPanelApiServerGetNewUUIDResponse200
+from .get_panel_api_server_get_new_vless_enc_response_200 import GetPanelApiServerGetNewVlessEncResponse200
+from .get_panel_api_server_get_new_x25519_cert_response_200 import GetPanelApiServerGetNewX25519CertResponse200
+from .get_panel_api_server_get_newmldsa_65_response_200 import GetPanelApiServerGetNewmldsa65Response200
+from .get_panel_api_server_get_newmlkem_768_response_200 import GetPanelApiServerGetNewmlkem768Response200
+from .get_panel_api_server_get_panel_update_info_response_200 import GetPanelApiServerGetPanelUpdateInfoResponse200
+from .get_panel_api_server_get_xray_version_response_200 import GetPanelApiServerGetXrayVersionResponse200
+from .get_panel_api_server_history_metric_bucket_response_200 import GetPanelApiServerHistoryMetricBucketResponse200
+from .get_panel_api_server_status_response_200 import GetPanelApiServerStatusResponse200
+from .get_panel_api_server_xray_metrics_history_metric_bucket_response_200 import (
+    GetPanelApiServerXrayMetricsHistoryMetricBucketResponse200,
+)
+from .get_panel_api_server_xray_metrics_state_response_200 import GetPanelApiServerXrayMetricsStateResponse200
+from .get_panel_api_server_xray_observatory_history_tag_bucket_response_200 import (
+    GetPanelApiServerXrayObservatoryHistoryTagBucketResponse200,
+)
+from .get_panel_api_server_xray_observatory_response_200 import GetPanelApiServerXrayObservatoryResponse200
+from .get_panel_setting_api_tokens_response_200 import GetPanelSettingApiTokensResponse200
+from .get_panel_setting_get_default_json_config_response_200 import GetPanelSettingGetDefaultJsonConfigResponse200
+from .get_panel_xray_get_default_json_config_response_200 import GetPanelXrayGetDefaultJsonConfigResponse200
+from .get_panel_xray_get_outbounds_traffic_response_200 import GetPanelXrayGetOutboundsTrafficResponse200
+from .get_panel_xray_get_xray_result_response_200 import GetPanelXrayGetXrayResultResponse200
+from .get_sub_path_subid_response_200 import GetSubPathSubidResponse200
+from .get_ws_response_200 import GetWsResponse200
+from .post_get_two_factor_enable_response_200 import PostGetTwoFactorEnableResponse200
+from .post_login_body import PostLoginBody
+from .post_login_response_200 import PostLoginResponse200
+from .post_login_response_400 import PostLoginResponse400
+from .post_logout_response_200 import PostLogoutResponse200
+from .post_panel_api_backuptotgbot_response_200 import PostPanelApiBackuptotgbotResponse200
+from .post_panel_api_clients_add_body import PostPanelApiClientsAddBody
+from .post_panel_api_clients_add_response_200 import PostPanelApiClientsAddResponse200
+from .post_panel_api_clients_bulk_adjust_body import PostPanelApiClientsBulkAdjustBody
+from .post_panel_api_clients_bulk_adjust_response_200 import PostPanelApiClientsBulkAdjustResponse200
+from .post_panel_api_clients_bulk_attach_body import PostPanelApiClientsBulkAttachBody
+from .post_panel_api_clients_bulk_attach_response_200 import PostPanelApiClientsBulkAttachResponse200
+from .post_panel_api_clients_bulk_create_body import PostPanelApiClientsBulkCreateBody
+from .post_panel_api_clients_bulk_create_response_200 import PostPanelApiClientsBulkCreateResponse200
+from .post_panel_api_clients_bulk_del_body import PostPanelApiClientsBulkDelBody
+from .post_panel_api_clients_bulk_del_response_200 import PostPanelApiClientsBulkDelResponse200
+from .post_panel_api_clients_bulk_detach_body import PostPanelApiClientsBulkDetachBody
+from .post_panel_api_clients_bulk_detach_response_200 import PostPanelApiClientsBulkDetachResponse200
+from .post_panel_api_clients_bulk_reset_traffic_body import PostPanelApiClientsBulkResetTrafficBody
+from .post_panel_api_clients_bulk_reset_traffic_response_200 import PostPanelApiClientsBulkResetTrafficResponse200
+from .post_panel_api_clients_clear_ips_email_response_200 import PostPanelApiClientsClearIpsEmailResponse200
+from .post_panel_api_clients_del_depleted_response_200 import PostPanelApiClientsDelDepletedResponse200
+from .post_panel_api_clients_del_email_response_200 import PostPanelApiClientsDelEmailResponse200
+from .post_panel_api_clients_email_attach_body import PostPanelApiClientsEmailAttachBody
+from .post_panel_api_clients_email_attach_response_200 import PostPanelApiClientsEmailAttachResponse200
+from .post_panel_api_clients_email_detach_body import PostPanelApiClientsEmailDetachBody
+from .post_panel_api_clients_email_detach_response_200 import PostPanelApiClientsEmailDetachResponse200
+from .post_panel_api_clients_groups_bulk_add_body import PostPanelApiClientsGroupsBulkAddBody
+from .post_panel_api_clients_groups_bulk_add_response_200 import PostPanelApiClientsGroupsBulkAddResponse200
+from .post_panel_api_clients_groups_bulk_remove_body import PostPanelApiClientsGroupsBulkRemoveBody
+from .post_panel_api_clients_groups_bulk_remove_response_200 import PostPanelApiClientsGroupsBulkRemoveResponse200
+from .post_panel_api_clients_groups_create_body import PostPanelApiClientsGroupsCreateBody
+from .post_panel_api_clients_groups_create_response_200 import PostPanelApiClientsGroupsCreateResponse200
+from .post_panel_api_clients_groups_delete_body import PostPanelApiClientsGroupsDeleteBody
+from .post_panel_api_clients_groups_delete_response_200 import PostPanelApiClientsGroupsDeleteResponse200
+from .post_panel_api_clients_groups_rename_body import PostPanelApiClientsGroupsRenameBody
+from .post_panel_api_clients_groups_rename_response_200 import PostPanelApiClientsGroupsRenameResponse200
+from .post_panel_api_clients_ips_email_response_200 import PostPanelApiClientsIpsEmailResponse200
+from .post_panel_api_clients_last_online_response_200 import PostPanelApiClientsLastOnlineResponse200
+from .post_panel_api_clients_onlines_response_200 import PostPanelApiClientsOnlinesResponse200
+from .post_panel_api_clients_reset_all_traffics_response_200 import PostPanelApiClientsResetAllTrafficsResponse200
+from .post_panel_api_clients_reset_traffic_email_response_200 import PostPanelApiClientsResetTrafficEmailResponse200
+from .post_panel_api_clients_update_email_body import PostPanelApiClientsUpdateEmailBody
+from .post_panel_api_clients_update_email_response_200 import PostPanelApiClientsUpdateEmailResponse200
+from .post_panel_api_clients_update_traffic_email_body import PostPanelApiClientsUpdateTrafficEmailBody
+from .post_panel_api_clients_update_traffic_email_response_200 import PostPanelApiClientsUpdateTrafficEmailResponse200
+from .post_panel_api_custom_geo_add_body import PostPanelApiCustomGeoAddBody
+from .post_panel_api_custom_geo_add_response_200 import PostPanelApiCustomGeoAddResponse200
+from .post_panel_api_custom_geo_delete_id_response_200 import PostPanelApiCustomGeoDeleteIdResponse200
+from .post_panel_api_custom_geo_download_id_response_200 import PostPanelApiCustomGeoDownloadIdResponse200
+from .post_panel_api_custom_geo_update_all_response_200 import PostPanelApiCustomGeoUpdateAllResponse200
+from .post_panel_api_custom_geo_update_id_response_200 import PostPanelApiCustomGeoUpdateIdResponse200
+from .post_panel_api_inbounds_add_body import PostPanelApiInboundsAddBody
+from .post_panel_api_inbounds_add_response_200 import PostPanelApiInboundsAddResponse200
+from .post_panel_api_inbounds_add_response_400 import PostPanelApiInboundsAddResponse400
+from .post_panel_api_inbounds_del_id_response_200 import PostPanelApiInboundsDelIdResponse200
+from .post_panel_api_inbounds_id_del_all_clients_response_200 import PostPanelApiInboundsIdDelAllClientsResponse200
+from .post_panel_api_inbounds_id_fallbacks_body import PostPanelApiInboundsIdFallbacksBody
+from .post_panel_api_inbounds_id_fallbacks_response_200 import PostPanelApiInboundsIdFallbacksResponse200
+from .post_panel_api_inbounds_id_reset_traffic_response_200 import PostPanelApiInboundsIdResetTrafficResponse200
+from .post_panel_api_inbounds_import_response_200 import PostPanelApiInboundsImportResponse200
+from .post_panel_api_inbounds_reset_all_traffics_response_200 import PostPanelApiInboundsResetAllTrafficsResponse200
+from .post_panel_api_inbounds_set_enable_id_body import PostPanelApiInboundsSetEnableIdBody
+from .post_panel_api_inbounds_set_enable_id_response_200 import PostPanelApiInboundsSetEnableIdResponse200
+from .post_panel_api_inbounds_update_id_response_200 import PostPanelApiInboundsUpdateIdResponse200
+from .post_panel_api_nodes_add_body import PostPanelApiNodesAddBody
+from .post_panel_api_nodes_add_response_200 import PostPanelApiNodesAddResponse200
+from .post_panel_api_nodes_del_id_response_200 import PostPanelApiNodesDelIdResponse200
+from .post_panel_api_nodes_probe_id_response_200 import PostPanelApiNodesProbeIdResponse200
+from .post_panel_api_nodes_set_enable_id_body import PostPanelApiNodesSetEnableIdBody
+from .post_panel_api_nodes_set_enable_id_response_200 import PostPanelApiNodesSetEnableIdResponse200
+from .post_panel_api_nodes_test_body import PostPanelApiNodesTestBody
+from .post_panel_api_nodes_test_response_200 import PostPanelApiNodesTestResponse200
+from .post_panel_api_nodes_update_id_body import PostPanelApiNodesUpdateIdBody
+from .post_panel_api_nodes_update_id_response_200 import PostPanelApiNodesUpdateIdResponse200
+from .post_panel_api_server_get_new_ech_cert_body import PostPanelApiServerGetNewEchCertBody
+from .post_panel_api_server_get_new_ech_cert_response_200 import PostPanelApiServerGetNewEchCertResponse200
+from .post_panel_api_server_import_db_response_200 import PostPanelApiServerImportDBResponse200
+from .post_panel_api_server_install_xray_version_response_200 import PostPanelApiServerInstallXrayVersionResponse200
+from .post_panel_api_server_logs_count_body import PostPanelApiServerLogsCountBody
+from .post_panel_api_server_logs_count_response_200 import PostPanelApiServerLogsCountResponse200
+from .post_panel_api_server_restart_xray_service_response_200 import PostPanelApiServerRestartXrayServiceResponse200
+from .post_panel_api_server_restart_xray_service_response_400 import PostPanelApiServerRestartXrayServiceResponse400
+from .post_panel_api_server_stop_xray_service_response_200 import PostPanelApiServerStopXrayServiceResponse200
+from .post_panel_api_server_stop_xray_service_response_400 import PostPanelApiServerStopXrayServiceResponse400
+from .post_panel_api_server_update_geofile_body import PostPanelApiServerUpdateGeofileBody
+from .post_panel_api_server_update_geofile_file_name_response_200 import (
+    PostPanelApiServerUpdateGeofileFileNameResponse200,
+)
+from .post_panel_api_server_update_geofile_response_200 import PostPanelApiServerUpdateGeofileResponse200
+from .post_panel_api_server_update_panel_response_200 import PostPanelApiServerUpdatePanelResponse200
+from .post_panel_api_server_xraylogs_count_body import PostPanelApiServerXraylogsCountBody
+from .post_panel_api_server_xraylogs_count_response_200 import PostPanelApiServerXraylogsCountResponse200
+from .post_panel_setting_all_response_200 import PostPanelSettingAllResponse200
+from .post_panel_setting_api_tokens_create_body import PostPanelSettingApiTokensCreateBody
+from .post_panel_setting_api_tokens_create_response_200 import PostPanelSettingApiTokensCreateResponse200
+from .post_panel_setting_api_tokens_create_response_400 import PostPanelSettingApiTokensCreateResponse400
+from .post_panel_setting_api_tokens_delete_id_response_200 import PostPanelSettingApiTokensDeleteIdResponse200
+from .post_panel_setting_api_tokens_set_enabled_id_body import PostPanelSettingApiTokensSetEnabledIdBody
+from .post_panel_setting_api_tokens_set_enabled_id_response_200 import PostPanelSettingApiTokensSetEnabledIdResponse200
+from .post_panel_setting_default_settings_response_200 import PostPanelSettingDefaultSettingsResponse200
+from .post_panel_setting_restart_panel_response_200 import PostPanelSettingRestartPanelResponse200
+from .post_panel_setting_update_body import PostPanelSettingUpdateBody
+from .post_panel_setting_update_response_200 import PostPanelSettingUpdateResponse200
+from .post_panel_setting_update_user_body import PostPanelSettingUpdateUserBody
+from .post_panel_setting_update_user_response_200 import PostPanelSettingUpdateUserResponse200
+from .post_panel_xray_nord_action_response_200 import PostPanelXrayNordActionResponse200
+from .post_panel_xray_reset_outbounds_traffic_body import PostPanelXrayResetOutboundsTrafficBody
+from .post_panel_xray_reset_outbounds_traffic_response_200 import PostPanelXrayResetOutboundsTrafficResponse200
+from .post_panel_xray_response_200 import PostPanelXrayResponse200
+from .post_panel_xray_test_outbound_body import PostPanelXrayTestOutboundBody
+from .post_panel_xray_test_outbound_response_200 import PostPanelXrayTestOutboundResponse200
+from .post_panel_xray_update_response_200 import PostPanelXrayUpdateResponse200
+from .post_panel_xray_warp_action_response_200 import PostPanelXrayWarpActionResponse200
+
+__all__ = (
+    "GetClashPathSubidResponse200",
+    "GetCsrfTokenResponse200",
+    "GetJsonPathSubidResponse200",
+    "GetPanelApiClientsGetEmailResponse200",
+    "GetPanelApiClientsGroupsNameEmailsResponse200",
+    "GetPanelApiClientsGroupsResponse200",
+    "GetPanelApiClientsLinksEmailResponse200",
+    "GetPanelApiClientsListPagedResponse200",
+    "GetPanelApiClientsListResponse200",
+    "GetPanelApiClientsSubLinksSubIdResponse200",
+    "GetPanelApiClientsTrafficEmailResponse200",
+    "GetPanelApiCustomGeoAliasesResponse200",
+    "GetPanelApiCustomGeoListResponse200",
+    "GetPanelApiInboundsGetIdResponse200",
+    "GetPanelApiInboundsIdFallbacksResponse200",
+    "GetPanelApiInboundsListResponse200",
+    "GetPanelApiInboundsListSlimResponse200",
+    "GetPanelApiInboundsOptionsResponse200",
+    "GetPanelApiNodesGetIdResponse200",
+    "GetPanelApiNodesHistoryIdMetricBucketResponse200",
+    "GetPanelApiNodesListResponse200",
+    "GetPanelApiServerCpuHistoryBucketResponse200",
+    "GetPanelApiServerGetConfigJsonResponse200",
+    "GetPanelApiServerGetDbResponse200",
+    "GetPanelApiServerGetNewmldsa65Response200",
+    "GetPanelApiServerGetNewmlkem768Response200",
+    "GetPanelApiServerGetNewUUIDResponse200",
+    "GetPanelApiServerGetNewVlessEncResponse200",
+    "GetPanelApiServerGetNewX25519CertResponse200",
+    "GetPanelApiServerGetPanelUpdateInfoResponse200",
+    "GetPanelApiServerGetXrayVersionResponse200",
+    "GetPanelApiServerHistoryMetricBucketResponse200",
+    "GetPanelApiServerStatusResponse200",
+    "GetPanelApiServerXrayMetricsHistoryMetricBucketResponse200",
+    "GetPanelApiServerXrayMetricsStateResponse200",
+    "GetPanelApiServerXrayObservatoryHistoryTagBucketResponse200",
+    "GetPanelApiServerXrayObservatoryResponse200",
+    "GetPanelSettingApiTokensResponse200",
+    "GetPanelSettingGetDefaultJsonConfigResponse200",
+    "GetPanelXrayGetDefaultJsonConfigResponse200",
+    "GetPanelXrayGetOutboundsTrafficResponse200",
+    "GetPanelXrayGetXrayResultResponse200",
+    "GetSubPathSubidResponse200",
+    "GetWsResponse200",
+    "PostGetTwoFactorEnableResponse200",
+    "PostLoginBody",
+    "PostLoginResponse200",
+    "PostLoginResponse400",
+    "PostLogoutResponse200",
+    "PostPanelApiBackuptotgbotResponse200",
+    "PostPanelApiClientsAddBody",
+    "PostPanelApiClientsAddResponse200",
+    "PostPanelApiClientsBulkAdjustBody",
+    "PostPanelApiClientsBulkAdjustResponse200",
+    "PostPanelApiClientsBulkAttachBody",
+    "PostPanelApiClientsBulkAttachResponse200",
+    "PostPanelApiClientsBulkCreateBody",
+    "PostPanelApiClientsBulkCreateResponse200",
+    "PostPanelApiClientsBulkDelBody",
+    "PostPanelApiClientsBulkDelResponse200",
+    "PostPanelApiClientsBulkDetachBody",
+    "PostPanelApiClientsBulkDetachResponse200",
+    "PostPanelApiClientsBulkResetTrafficBody",
+    "PostPanelApiClientsBulkResetTrafficResponse200",
+    "PostPanelApiClientsClearIpsEmailResponse200",
+    "PostPanelApiClientsDelDepletedResponse200",
+    "PostPanelApiClientsDelEmailResponse200",
+    "PostPanelApiClientsEmailAttachBody",
+    "PostPanelApiClientsEmailAttachResponse200",
+    "PostPanelApiClientsEmailDetachBody",
+    "PostPanelApiClientsEmailDetachResponse200",
+    "PostPanelApiClientsGroupsBulkAddBody",
+    "PostPanelApiClientsGroupsBulkAddResponse200",
+    "PostPanelApiClientsGroupsBulkRemoveBody",
+    "PostPanelApiClientsGroupsBulkRemoveResponse200",
+    "PostPanelApiClientsGroupsCreateBody",
+    "PostPanelApiClientsGroupsCreateResponse200",
+    "PostPanelApiClientsGroupsDeleteBody",
+    "PostPanelApiClientsGroupsDeleteResponse200",
+    "PostPanelApiClientsGroupsRenameBody",
+    "PostPanelApiClientsGroupsRenameResponse200",
+    "PostPanelApiClientsIpsEmailResponse200",
+    "PostPanelApiClientsLastOnlineResponse200",
+    "PostPanelApiClientsOnlinesResponse200",
+    "PostPanelApiClientsResetAllTrafficsResponse200",
+    "PostPanelApiClientsResetTrafficEmailResponse200",
+    "PostPanelApiClientsUpdateEmailBody",
+    "PostPanelApiClientsUpdateEmailResponse200",
+    "PostPanelApiClientsUpdateTrafficEmailBody",
+    "PostPanelApiClientsUpdateTrafficEmailResponse200",
+    "PostPanelApiCustomGeoAddBody",
+    "PostPanelApiCustomGeoAddResponse200",
+    "PostPanelApiCustomGeoDeleteIdResponse200",
+    "PostPanelApiCustomGeoDownloadIdResponse200",
+    "PostPanelApiCustomGeoUpdateAllResponse200",
+    "PostPanelApiCustomGeoUpdateIdResponse200",
+    "PostPanelApiInboundsAddBody",
+    "PostPanelApiInboundsAddResponse200",
+    "PostPanelApiInboundsAddResponse400",
+    "PostPanelApiInboundsDelIdResponse200",
+    "PostPanelApiInboundsIdDelAllClientsResponse200",
+    "PostPanelApiInboundsIdFallbacksBody",
+    "PostPanelApiInboundsIdFallbacksResponse200",
+    "PostPanelApiInboundsIdResetTrafficResponse200",
+    "PostPanelApiInboundsImportResponse200",
+    "PostPanelApiInboundsResetAllTrafficsResponse200",
+    "PostPanelApiInboundsSetEnableIdBody",
+    "PostPanelApiInboundsSetEnableIdResponse200",
+    "PostPanelApiInboundsUpdateIdResponse200",
+    "PostPanelApiNodesAddBody",
+    "PostPanelApiNodesAddResponse200",
+    "PostPanelApiNodesDelIdResponse200",
+    "PostPanelApiNodesProbeIdResponse200",
+    "PostPanelApiNodesSetEnableIdBody",
+    "PostPanelApiNodesSetEnableIdResponse200",
+    "PostPanelApiNodesTestBody",
+    "PostPanelApiNodesTestResponse200",
+    "PostPanelApiNodesUpdateIdBody",
+    "PostPanelApiNodesUpdateIdResponse200",
+    "PostPanelApiServerGetNewEchCertBody",
+    "PostPanelApiServerGetNewEchCertResponse200",
+    "PostPanelApiServerImportDBResponse200",
+    "PostPanelApiServerInstallXrayVersionResponse200",
+    "PostPanelApiServerLogsCountBody",
+    "PostPanelApiServerLogsCountResponse200",
+    "PostPanelApiServerRestartXrayServiceResponse200",
+    "PostPanelApiServerRestartXrayServiceResponse400",
+    "PostPanelApiServerStopXrayServiceResponse200",
+    "PostPanelApiServerStopXrayServiceResponse400",
+    "PostPanelApiServerUpdateGeofileBody",
+    "PostPanelApiServerUpdateGeofileFileNameResponse200",
+    "PostPanelApiServerUpdateGeofileResponse200",
+    "PostPanelApiServerUpdatePanelResponse200",
+    "PostPanelApiServerXraylogsCountBody",
+    "PostPanelApiServerXraylogsCountResponse200",
+    "PostPanelSettingAllResponse200",
+    "PostPanelSettingApiTokensCreateBody",
+    "PostPanelSettingApiTokensCreateResponse200",
+    "PostPanelSettingApiTokensCreateResponse400",
+    "PostPanelSettingApiTokensDeleteIdResponse200",
+    "PostPanelSettingApiTokensSetEnabledIdBody",
+    "PostPanelSettingApiTokensSetEnabledIdResponse200",
+    "PostPanelSettingDefaultSettingsResponse200",
+    "PostPanelSettingRestartPanelResponse200",
+    "PostPanelSettingUpdateBody",
+    "PostPanelSettingUpdateResponse200",
+    "PostPanelSettingUpdateUserBody",
+    "PostPanelSettingUpdateUserResponse200",
+    "PostPanelXrayNordActionResponse200",
+    "PostPanelXrayResetOutboundsTrafficBody",
+    "PostPanelXrayResetOutboundsTrafficResponse200",
+    "PostPanelXrayResponse200",
+    "PostPanelXrayTestOutboundBody",
+    "PostPanelXrayTestOutboundResponse200",
+    "PostPanelXrayUpdateResponse200",
+    "PostPanelXrayWarpActionResponse200",
+)

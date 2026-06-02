@@ -31,7 +31,7 @@ logs/
 
 # Environment variables
 .env
-.env.*
+.env.prod
 
 # VS Code
 .vscode/
@@ -60,7 +60,3 @@ docker-compose.override.yml
 # IDE/editor
 *.swp
 *~
-
-# Generated OpenAPI client
-hutep_vpn/
-# If generated client files should be versioned, remove the previous line.
