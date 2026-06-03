@@ -53,7 +53,6 @@ class CreateTransactionBody:
 class CreateTransactionResponse:
     transaction_id: str
     status: PaymentStatus
-    payment_details: PaymentDetailsResponse
     url: str
     payment_method: int | None = None
     description: str | None = None
@@ -65,7 +64,6 @@ class CreateTransactionResponse:
         return cls(
             transaction_id=data['transactionId'],
             status=PaymentStatus(data['status']),
-            payment_details=PaymentDetailsResponse.from_dict(data['paymentDetails']),
             url=data['url'],
             payment_method=data.get('paymentMethod'),
             description=data.get('description'),
