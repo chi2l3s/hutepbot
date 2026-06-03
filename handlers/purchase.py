@@ -6,10 +6,12 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from keyboards.purchase import plans_keyboard, payment_methods_kb
 from services.crypto import create_invoice, check_payment
 from services.subscription import activate_subscription
+from services.platega import create_payment_url
 from states import PaymentState
 from constants import PLANS
 
 router = Router(name='purchase')
+
 
 @router.callback_query(F.data == 'purchase')
 async def show_plans(callback: CallbackQuery, state: FSMContext):
@@ -19,6 +21,7 @@ async def show_plans(callback: CallbackQuery, state: FSMContext):
         f'Выберите план подписки:',
         reply_markup=plans_keyboard()
     )
+
 
 @router.callback_query(PaymentState.choosing_plan, F.data.in_(PLANS.keys()))
 async def choose_method(callback: CallbackQuery, state: FSMContext):
@@ -33,6 +36,7 @@ async def choose_method(callback: CallbackQuery, state: FSMContext):
         "Выбери способ оплаты:",
         reply_markup=payment_methods_kb()
     )
+
 
 @router.callback_query(PaymentState.choosing_method, F.data == 'pay_stars')
 async def pay_stars(callback: CallbackQuery, state: FSMContext):
@@ -49,6 +53,27 @@ async def pay_stars(callback: CallbackQuery, state: FSMContext):
         prices=[LabeledPrice(label=plan['label'], amount=plan['stars'])]
     )
 
+
+@router.callback_query(PaymentState.choosing_method, F.data == 'pay_card')
+async def pay_card(callback: CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    plan = PLANS[data['plan_key']]
+
+    transaction_url = await create_payment_url(plan['price'], plan_key=plan['plan_key'], user_id=callback.from_user.id)
+    
+    kb = InlineKeyboardBuilder()
+    kb.button(text=f"💳 Оплатить {plan['price']} ₽", url=transaction_url)
+    
+    await state.clear()
+    await callback.answer()
+    await callback.message.edit_text(
+        f"💳 Оплата картой\n\n"
+        f"Тариф: <b>{plan['label']}</b>\n"
+        f"Сумма: <b>{plan['price']} ₽</b>",
+        reply_markup=kb.as_markup()
+    )
+
+
 @router.callback_query(PaymentState.choosing_method, F.data == 'pay_crypto')
 async def pay_crypto(callback: CallbackQuery, state: FSMContext):
     data = await state.get_data()
@@ -64,7 +89,8 @@ async def pay_crypto(callback: CallbackQuery, state: FSMContext):
 
     kb = InlineKeyboardBuilder()
     kb.button(text=f"💰 Оплатить {amount} RUB", url=invoice_url)
-    kb.button(text="✅ Я оплатил", callback_data=f"check_crypto:{data['plan_key']}")
+    kb.button(text="✅ Я оплатил",
+              callback_data=f"check_crypto:{data['plan_key']}")
     kb.adjust(1)
 
     await callback.message.edit_text(
@@ -75,6 +101,7 @@ async def pay_crypto(callback: CallbackQuery, state: FSMContext):
         reply_markup=kb.as_markup()
     )
 
+
 @router.callback_query(F.data == 'back_plans')
 async def back_main_handler(callback: CallbackQuery):
     await callback.answer()
@@ -83,6 +110,7 @@ async def back_main_handler(callback: CallbackQuery):
         f'Выберите план подписки:',
         reply_markup=plans_keyboard()
     )
+
 
 @router.message(F.successful_payment)
 async def successful_payment(message: Message, session: AsyncSession):
@@ -109,6 +137,7 @@ async def successful_payment(message: Message, session: AsyncSession):
         await message.answer(
             '⚠️ Оплата получена, но не удалось выдать VPN. Напиши в поддержку — мы всё починим.'
         )
+
 
 @router.callback_query(F.data.startswith("check_crypto:"))
 async def check_crypto_payment(callback: CallbackQuery, session: AsyncSession):
