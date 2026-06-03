@@ -59,7 +59,7 @@ async def pay_card(callback: CallbackQuery, state: FSMContext):
     data = await state.get_data()
     plan = PLANS[data['plan_key']]
 
-    transaction_url = await create_payment_url(plan['price'], plan_key=plan['plan_key'], user_id=callback.from_user.id)
+    transaction_url = await create_payment_url(plan['price'], plan_key=data['plan_key'], user_id=callback.from_user.id)
     
     kb = InlineKeyboardBuilder()
     kb.button(text=f"💳 Оплатить {plan['price']} ₽", url=transaction_url)
