@@ -10,7 +10,7 @@ def get_crypto_client() -> AioCryptoPay:
     if crypto is None:
         crypto = AioCryptoPay(
             token=CRYPTO_BOT_TOKEN,
-            network=Networks.TEST_NET
+            network=Networks.MAIN_NET
         )
     return crypto
 
