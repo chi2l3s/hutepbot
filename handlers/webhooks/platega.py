@@ -11,7 +11,10 @@ async def platega_webhook(request: web.Request) -> web.Response:
         
         secret = request.headers.get('X-Secret')
         
-        if webhook.is_confirmed and webhook.payload and secret == PLATEGA_SECRET_KEY:
+        if not secret == PLATEGA_SECRET_KEY:
+            return web.json_response(status=403)
+        
+        if webhook.is_confirmed and webhook.payload:
             plan_key, user_id = webhook.payload.split(':')
             
             bot = request.app['bot']
