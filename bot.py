@@ -1,4 +1,3 @@
-import asyncio
 from aiohttp import web
 from aiogram import Bot, Dispatcher
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
@@ -7,6 +6,7 @@ from aiogram.enums import ParseMode
 from aiogram.client.session.aiohttp import AiohttpSession
 from config import BOT_TOKEN, WEBHOOK_URL
 from handlers import start, terms, support, profile, purchase
+from handlers.webhooks.platega import platega_webhook
 from middlewares.db import DbSessionMiddleware
 from db.base import SessionLocal
 from logger import setup_logger
@@ -45,12 +45,17 @@ def main():
     dp.shutdown.register(on_shutdown)
 
     app = web.Application()
+    
+    app['bot'] = bot
+    app['session_factory'] = SessionLocal
 
     webhook_request_handler = SimpleRequestHandler(
         dispatcher=dp,
         bot=bot
     )
     webhook_request_handler.register(app, path='/webhook')
+    
+    app.router.add_post('/webhooks/platega', platega_webhook)
 
     setup_application(app, dp, bot=bot) 
 

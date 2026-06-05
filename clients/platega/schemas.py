@@ -78,3 +78,27 @@ class CreateTransactionResponse:
     @property
     def is_pending(self) -> bool:
         return self.status == PaymentStatus.PENDING
+    
+@dataclass
+class CallbackPayload:
+    id: str
+    amount: float
+    currency: str
+    status: PaymentStatus
+    payment_method: int
+    payload: str
+    
+    @classmethod
+    def from_dict(cls, data: dict) -> 'CallbackPayload':
+        return cls(
+            id=data['id'],
+            amount=data['amount'],
+            currency=data['currency'],
+            status=PaymentStatus(data['status']),
+            payment_method=data['paymentMethod'],
+            payload=data['payload']
+        )
+        
+    @property
+    def is_confirmed(self) -> bool:
+        return self.status == PaymentStatus.CONFIRMED
