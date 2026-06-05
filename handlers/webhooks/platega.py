@@ -1,6 +1,7 @@
 from aiohttp import web
 from loguru import logger
 from clients.platega.schemas import CallbackPayload
+from config import PLATEGA_SECRET_KEY
 
 async def platega_webhook(request: web.Request) -> web.Response:
     try:
@@ -8,7 +9,9 @@ async def platega_webhook(request: web.Request) -> web.Response:
         webhook = CallbackPayload.from_dict(data)
         logger.debug(f'Platega Webhook: {webhook}')
         
-        if webhook.is_confirmed and webhook.payload:
+        secret = request.headers.get('X-Secret')
+        
+        if webhook.is_confirmed and webhook.payload and secret == PLATEGA_SECRET_KEY:
             plan_key, user_id = webhook.payload.split(':')
             
             bot = request.app['bot']
@@ -24,7 +27,7 @@ async def platega_webhook(request: web.Request) -> web.Response:
                     session=session,
                     user_id=int(user_id),
                     plan_key=plan_key,
-                    amount=plan_key['price'],
+                    amount=plan['price'],
                     provider='card'
                 )
                 
@@ -36,3 +39,4 @@ async def platega_webhook(request: web.Request) -> web.Response:
         return web.json_response(status=200)
     except Exception as e:
         logger.error(f'Ошибка обработки webhook: {e}')
+        return web.json_response(status=500)
