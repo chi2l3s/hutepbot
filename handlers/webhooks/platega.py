@@ -31,7 +31,8 @@ async def platega_webhook(request: web.Request) -> web.Response:
                     user_id=int(user_id),
                     plan_key=plan_key,
                     amount=plan['price'],
-                    provider='card'
+                    provider='card',
+                    external_id=webhook.id
                 )
                 
             await bot.send_message(
